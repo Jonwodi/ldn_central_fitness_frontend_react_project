@@ -17,7 +17,7 @@ import PublicAPI from './pages/PublicAPI';
 function App() {
   let history = useHistory();
   return (
-    <BrowserRouter history={history} basename='/ldn_central_frontend_react_project'>
+    <BrowserRouter history={history} basename='/ldn_central_fitness_frontend_react_project'>
       <Navbar />
       <Switch>
           <Route exact path='/' render={props => <Home {...props} />} />
