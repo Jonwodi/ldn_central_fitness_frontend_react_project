@@ -1,6 +1,6 @@
 import Navbar from './components/Navbar';
 import { useHistory } from 'react-router';
-import { HashRouter, Switch, Route} from 'react-router-dom';
+import { BrowserRouter, Switch, Route} from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
@@ -17,7 +17,7 @@ import PublicAPI from './pages/PublicAPI';
 function App() {
   let history = useHistory();
   return (
-    <HashRouter history={history}>
+    <BrowserRouter history={history}>
       <Navbar />
       <Switch>
           <Route exact path='/' render={props => <Home {...props} />} />
@@ -31,7 +31,7 @@ function App() {
       </Switch>
       <Cookie />
       <Footer />
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
