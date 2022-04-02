@@ -90,7 +90,7 @@ export default function RegistrationForm() {
         else if (process.env.NODE_ENV === 'production') {
           await axios.post(`${cloudBaseUrl}/registrations/`, formData, { withCredentials: true });
         }
-        history.push('/');
+        history.push('/login');
       } catch (err) {
         setFormErrors(err.response.data);
       }
