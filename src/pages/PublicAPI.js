@@ -68,7 +68,7 @@ const options = {
 
 export default function PublicAPI() {
   const classes = useStyles();
-  const publicApi_Url = "http://api.citybik.es/v2/networks/";
+  const publicApi_Url = "https://api.citybik.es/v2/networks/";
 
   const [networks, setNetworks] = useState({});
   const [labels, setLabels] = useState([]);
