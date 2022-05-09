@@ -89,7 +89,8 @@ export default function LoginForm() {
           await axios.post(`${cloudBaseUrl}/sessions/`, formData, { withCredentials: true });
         }
         history.push('/');
-      } catch (err) {
+      } 
+      catch (err) {
         setFormErrors(err.response.data);
       }
     }

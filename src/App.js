@@ -1,4 +1,3 @@
-import Navbar from './components/Navbar';
 import { useHistory } from 'react-router';
 import { BrowserRouter, Switch, Route} from 'react-router-dom';
 import './App.css';
@@ -12,13 +11,14 @@ import Login from './pages/Login';
 import GymDetails from './pages/GymDetails';
 import GymPartnerships from './pages/GymPartnerships';
 import PublicAPI from './pages/PublicAPI';
+import TailwindNavbar from './components/TailwindNavbar';
 
 
-function App() {
+export default function App() {
   let history = useHistory();
   return (
     <BrowserRouter history={history}>
-      <Navbar />
+      <TailwindNavbar />
       <Switch>
           <Route exact path='/' render={props => <Home {...props} />} />
           <Route exact path='/about-us' render={props => <AboutUs {...props} />} />
@@ -35,4 +35,4 @@ function App() {
   );
 }
 
-export default App;
+// export default App;

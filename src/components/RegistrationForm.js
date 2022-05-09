@@ -118,7 +118,7 @@ export default function RegistrationForm() {
           >
             <form onSubmit={handleSubmit}>
                 <Typography className={classes.boxesText} variant='h6'>Username</Typography>
-                <TextField variant='outlined' id="outlined-password-input" type="text" autoComplete="current-username" placeholder='Enter Username' className={classes.boxesMW} name="username" onChange={handleChange} />
+                <TextField variant='outlined' id="outlined-username-input" type="text" autoComplete="current-username" placeholder='Enter Username' className={classes.boxesMW} name="username" onChange={handleChange} />
                 <Typography className={classes.boxesText} variant='h6'>First name</Typography>
                 <TextField variant='outlined' id="outlined-first-name-input" type="text" autoComplete="current-first-name" placeholder='Enter First name' className={classes.boxesMW} name="first_name" onChange={handleChange} />
                 <Typography className={classes.boxesText} variant='h6'>Last name</Typography>

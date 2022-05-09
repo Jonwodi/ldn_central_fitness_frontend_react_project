@@ -79,7 +79,7 @@ export default function PublicAPI() {
     const response = await axios.get(`${publicApi_Url}${e.value}`, { withCredentials: false });
     setLabels([]);
     setData([]);
-    response.data.network.stations.slice(0, 6).map(s => {
+    response.data.network.stations.slice(0).map(s => {
       setLabels(labels => [...labels, s.extra.address]);
       setData(data => [...data, s.free_bikes]);
     })
