@@ -87,7 +87,7 @@ export default function TailwindNavbar() {
                     <span className="sr-only">Login to session</span>
                     <PersonIcon
                       color="secondary"
-                      className="h-6 w-6 hover:text-[#1de9b6]"
+                      className="h-6 w-6 hover:text-[#e65100]"
                       aria-hidden="true"
                     />
                   </IconButton>
@@ -97,7 +97,7 @@ export default function TailwindNavbar() {
                     <span className="sr-only">Log out of session</span>
                     <ExitToAppIcon
                       color="secondary"
-                      className="h-6 w-6 hover:text-[#1de9b6]"
+                      className="h-6 w-6 hover:text-[#e65100]"
                       aria-hidden="true"
                     />
                   </IconButton>
