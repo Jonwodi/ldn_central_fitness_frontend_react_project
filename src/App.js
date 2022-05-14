@@ -3,7 +3,6 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
-// import ContactUs from "./pages/ContactUs";
 import TailwindContactUs from "./pages/TailwindContactUs";
 import Footer from "./components/Footer";
 import Cookie from "./components/Cookies";
@@ -26,11 +25,6 @@ export default function App() {
           path="/about-us"
           render={(props) => <AboutUs {...props} />}
         />
-        {/* <Route
-          exact
-          path="/contact-us"
-          render={(props) => <ContactUs {...props} />}
-        /> */}
         <Route
           exact
           path="/contact-us"
