@@ -14,7 +14,46 @@
   }
   ```
 */
+import { useState } from "react";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+
 export default function TailwindLoginForm() {
+  let history = useHistory();
+
+  let formFields = {
+    username: "",
+    password: "",
+  };
+
+  const [formData, setFormData] = useState(formFields);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const [formErrors, setFormErrors] = useState(formFields);
+
+  const { REACT_APP_CLOUD_HOST_URL } = process.env;
+  const cloudBaseUrl = REACT_APP_CLOUD_HOST_URL;
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      if (process.env.NODE_ENV === "development") {
+        await axios.post("http://localhost:8000/sessions/", formData, {
+          withCredentials: true,
+        });
+      } else if (process.env.NODE_ENV === "production") {
+        await axios.post(`${cloudBaseUrl}/sessions/`, formData, {
+          withCredentials: true,
+        });
+      }
+      history.push("/");
+    } catch (err) {
+      setFormErrors(err.response.data);
+    }
+  }
   return (
     <>
       {/*
@@ -30,7 +69,7 @@ export default function TailwindLoginForm() {
           <h1 className="block h-8 w-auto text-white font-['Lobster-Regular'] text-2xl text-center">
             LDN Central Fitness Club
           </h1>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-[#212121]">
+          <h2 className="mt-2 text-center text-3xl font-extrabold text-[#212121]">
             Sign in to your account
           </h2>
           <p className="mt-2 text-center text-sm text-[#212121]">
@@ -45,20 +84,25 @@ export default function TailwindLoginForm() {
 
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="bg-[#212121] py-8 px-4 shadow sm:rounded-lg sm:px-10">
-            <form className="space-y-6" action="#" method="POST">
+            <form
+              className="space-y-6"
+              action="#"
+              method="POST"
+              onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor="email"
                   className="block text-sm font-medium text-white">
-                  Email address
+                  Username
                 </label>
                 <div className="mt-1">
                   <input
-                    id="email"
-                    name="email"
-                    type="email"
+                    id="username"
+                    name="username"
+                    type="text"
                     autoComplete="email"
                     required
+                    onChange={handleChange}
                     className="appearance-none block w-full px-3 py-2 border border-[#e65100] rounded-md shadow-sm placeholder-[#212121] focus:outline-none focus:ring-[#e65100] focus:border-[#e65100] sm:text-sm"
                   />
                 </div>
@@ -77,6 +121,7 @@ export default function TailwindLoginForm() {
                     type="password"
                     autoComplete="current-password"
                     required
+                    onChange={handleChange}
                     className="appearance-none block w-full px-3 py-2 border border-[#e65100] rounded-md shadow-sm placeholder-[#212121] focus:outline-none focus:ring-[#e65100] focus:border-[#e65100] sm:text-sm"
                   />
                 </div>
@@ -121,7 +166,7 @@ export default function TailwindLoginForm() {
                   <div className="w-full border-t border-gray-300" />
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-2 bg-white text-gray-500">
+                  <span className="px-2 bg-white text-[#212121]">
                     Or continue with
                   </span>
                 </div>
@@ -131,7 +176,7 @@ export default function TailwindLoginForm() {
                 <div>
                   <a
                     href="#"
-                    className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                    className="w-full inline-flex justify-center py-2 px-4 border border-[#e65100] hover:border-[#1de9b6] rounded-md shadow-sm bg-white text-sm font-medium text-[#e65100] hover:text-[#1de9b6] hover:bg-[#212121]">
                     <span className="sr-only">Sign in with Facebook</span>
                     <svg
                       className="w-5 h-5"
@@ -150,7 +195,7 @@ export default function TailwindLoginForm() {
                 <div>
                   <a
                     href="#"
-                    className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                    className="w-full inline-flex justify-center py-2 px-4 border border-[#e65100] hover:border-[#1de9b6] rounded-md shadow-sm bg-white text-sm font-medium text-[#e65100] hover:text-[#1de9b6] hover:bg-[#212121]">
                     <span className="sr-only">Sign in with Twitter</span>
                     <svg
                       className="w-5 h-5"
@@ -165,7 +210,7 @@ export default function TailwindLoginForm() {
                 <div>
                   <a
                     href="#"
-                    className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                    className="w-full inline-flex justify-center py-2 px-4 border border-[#e65100] hover:border-[#1de9b6] rounded-md shadow-sm bg-white text-sm font-medium text-[#e65100] hover:text-[#1de9b6] hover:bg-[#212121]">
                     <span className="sr-only">Sign in with GitHub</span>
                     <svg
                       className="w-5 h-5"
