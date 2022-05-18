@@ -1,6 +1,5 @@
 import { Box, makeStyles } from "@material-ui/core";
 import React from "react";
-// import LoginForm from "../components/LoginForm";
 import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 import TailwindLoginForm from "../components/TailwindLoginForm";
 
@@ -18,7 +17,6 @@ export default function Login() {
 
   return (
     <Box className={classes.LoginSection}>
-      {/* <LoginForm /> */}
       <TailwindLoginForm />
     </Box>
   );
